@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Примеры задач по физике</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .solution {
+            background-color: #fff;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: color 0.3s; /* Плавное изменение цвета при наведении */
+        }
+        h2:hover {
+            color: #007bff; /* Изменение цвета при наведении */
+        }
+        p {
+            margin-bottom: 20px;
+            position: relative;
+            text-align: center; /* Выравнивание текста по центру */
+        }
+        ps.{
+          text-align:right; 
+        
+        }
+        p img {
+            display: block; /* Сделать изображение блочным элементом */
+            margin: 0 auto; /* Выравнивание по центру */
+            width: 80%; /* Ширина изображения */
+            max-width: auto; /* Максимальная ширина изображения */
+            height: auto; /* Автоматическая высота */
+            border-radius: 10px; /* Закругление углов */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
+            cursor: pointer; /* Изменение курсора при наведении */
+            transition: transform 0.3s; /* Плавное изменение размера при наведении */
+        }
+        p img:hover {
+            transform: scale(1.1); /* Увеличение размера при наведении */
+        }
+        .steps {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 2s ease;
+            transition-delay: 0.1s; /* Задержка перед началом анимации */
+        }
+        .steps.active {
+            max-height: 6000px; /* Установка максимальной высоты при активации */
+        }
+        .full-screen-img {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0; /* Начальная прозрачность */
+            transition: opacity 0.5s ease; /* Плавное изменение прозрачности */
+        }
+        .full-screen-img.active {
+            display: flex; /* Показывать контейнер при активации */
+            opacity: 1; /* Изменение прозрачности при активации */
+        }
+        .full-screen-img img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Примеры задач по физике</h1>
+
+        <div class="solution">
+            <h2 onclick="toggleSteps('steps1')">Пример 1.<br> 
+                <ps>Задание: Движение тела задано уравнением ( x = A + Bt ), где ( A = 7.5 ) км, а ( B = -125 ) дм/с. Какой путь пройдет тело за 4 секунды своего движения?</ps></h2>
+            <div id="steps1" class="steps">
+                <p><img src="img/1_1.png" alt="Step 1" onclick="showFullScreen(this.src)"><strong>ШАГ 1.</strong> Прочитать условие задачи, кратко записать его</p>
+                <p><img src="img/1_2.png" alt="Step 2" onclick="showFullScreen(this.src)"><strong>ШАГ 2.</strong> Проверить, все ли величины выражены в одной системе единиц</p>
+                <p><img src="img/1_3.png" alt="Step 3" onclick="showFullScreen(this.src)"><strong>ШАГ 3.</strong> Выбрать тело отсчета. Задать направление осей координат</p>
+                <p><img src="img/1_4.png" alt="Step 4" onclick="showFullScreen(this.src)"><strong>ШАГ 4.</strong> Записать в векторной форме основные уравнения кинематики</p>
+                <p><img src="img/1_5.png" alt="Step 5" onclick="showFullScreen(this.src)"><strong>ШАГ 5.</strong> Осуществить перевод уравнений из векторной формы в скалярную (записать в проекциях на избранные направления координатных осей)</p>
+                <p><img src="img/1_6.png" alt="Step 6" onclick="showFullScreen(this.src)"><strong>ШАГ 6.</strong> Решить полученную систему уравнений относительно искомых величин в общем виде</p>
+                <p><img src="img/1_7.png" alt="Step 7" onclick="showFullScreen(this.src)"><strong>ШАГ 7.</strong> Проверить правильность решения в общем виде путем операций с наименованиями величин, входящих в формулу</p>
+                <p><img src="img/1_8.png" alt="Step 8" onclick="showFullScreen(this.src)"><strong>ШАГ 8.</strong> Произвести вычисления и оценку полученного результата</p>
+            </div>
+        </div>
+..................
+        <div class="solution">
+            <h2 onclick="toggleSteps('steps2')">Пример 2.<br> 
+                <ps>Задание: Движение двух велосипедистов задано уравнениями x1 = 5t (м) и x2 = 60 – 10t (м). Определите время и координату встречи велосипедистов.</ps></h2>
+            <div id="steps2" class="steps">
+                <p><img src="img/2_1.png" alt="Step 1" onclick="showFullScreen(this.src)"><strong>ШАГ 1.</strong> Прочитать условие задачи, кратко записать его</p>
+                <p><img src="img/2_2.png" alt="Step 2" onclick="showFullScreen(this.src)"><strong>ШАГ 2.</strong> Проверить, все ли величины выражены в одной системе единиц</p>
+                <p><img src="img/2_3.png" alt="Step 3" onclick="showFullScreen(this.src)"><strong>ШАГ 3.</strong> Выбрать тело отсчета. Задать направление осей координат</p>
+                <p><img src="img/2_4.png" alt="Step 4" onclick="showFullScreen(this.src)"><strong>ШАГ 4.</strong> Записать в векторной форме основные уравнения кинематики</p>
+                <p><img src="img/2_5.png" alt="Step 5" onclick="showFullScreen(this.src)"><strong>ШАГ 5.</strong> Осуществить перевод уравнений из векторной формы в скалярную (записать в проекциях на избранные направления координатных осей)</p>
+                <p><img src="img/2_6.png" alt="Step 6" onclick="showFullScreen(this.src)"><strong>ШАГ 6.</strong> Решить полученную систему уравнений относительно искомых величин в общем виде</p>
+                <p><img src="img/2_7.png" alt="Step 7" onclick="showFullScreen(this.src)"><strong>ШАГ 7.</strong> Проверить правильность решения в общем виде путем операций с наименованиями величин, входящих в формулу</p>
+                <p><img src="img/2_8.png" alt="Step 8" onclick="showFullScreen(this.src)"><strong>ШАГ 8.</strong> Произвести вычисления и оценку полученного результата</p>
+            </div>
+        </div>
+
+        <!-- Другие примеры -->
+
+    </div>
+
+    <div class="full-screen-img" onclick="hideFullScreen()">
+        <img src="" alt="Full Screen Image">
+    </div>
+
+    <script>
+        function toggleSteps(id) {
+            var steps = document.getElementById(id);
+            steps.classList.toggle('active');
+        }
+
+        function showFullScreen(src) {
+            var fullScreenImg = document.querySelector('.full-screen-img img');
+            fullScreenImg.src = src;
+            document.querySelector('.full-screen-img').style.display = 'flex';
+        }
+
+        function hideFullScreen() {
+            document.querySelector('.full-screen-img').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

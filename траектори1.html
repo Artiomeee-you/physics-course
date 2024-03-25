@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Траектория и перемещение</title>
+<style>
+    #canvas {
+        border: 1px solid black;
+    }
+    #description {
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+<div id="description">
+    <h2>Описание:</h2>
+    <p><strong>Траектория</strong> - это путь, по которому движется объект.</p>
+    <p><strong>Перемещение</strong> - это изменение положения объекта по траектории от одной точки к другой.</p>
+</div>
+<canvas id="canvas" width="800" height="400"></canvas>
+<div id="info"></div>
+<button onclick="startAnimation()">Start</button>
+<button onclick="stopAnimation()">Stop</button>
+<button onclick="resetAnimation()">Reset</button>
+<button onclick="changeTrajectory('parabola')">Парабола</button>
+<button onclick="changeTrajectory('sin')">Синусоида</button>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const infoDiv = document.getElementById('info');
+
+    let startX = 50;
+    let startY = 300;
+    let endX = 750;
+    let endY = 300;
+    let controlX = 400; // контрольная точка для параболы
+    let controlY = 100;
+
+    let t = 0;
+    let speed = 0.005; // уменьшаем скорость для увеличения количества периодов
+    let animation;
+    let trail = [];
+    let trajectory = 'parabola';
+
+    function draw() {
+        const currentX = trajectory === 'parabola' ?
+            (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * controlX + t * t * endX :
+            startX + t * (endX - startX);
+        const currentY = trajectory === 'parabola' ?
+            (1 - t) * (1 - t) * startY + 2 * (1 - t) * t * controlY + t * t * endY :
+            startY + Math.sin(t * Math.PI * 10) * 150; // изменяем амплитуду и увеличиваем количество периодов
+
+        // Update trail
+        trail.push({x: currentX, y: currentY});
+
+        // Draw trail
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.moveTo(trail[0].x, trail[0].y);
+        for (let i = 1; i < trail.length; i++) {
+            ctx.lineTo(trail[i].x, trail[i].y);
+        }
+        ctx.strokeStyle = 'rgba(0, 0, 0, 0.3)';
+        ctx.stroke();
+
+        // Draw moving object
+        ctx.beginPath();
+        ctx.arc(currentX, currentY, 5, 0, Math.PI * 2);
+        ctx.fillStyle = 'red';
+        ctx.fill();
+
+        // Update info
+        infoDiv.innerHTML = `Position: (${currentX.toFixed(2)}, ${currentY.toFixed(2)})`;
+
+        t += speed;
+
+        if (t > 1) {
+            stopAnimation();
+            // Draw line from start to end
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(endX, currentY);
+            ctx.strokeStyle = 'blue';
+            ctx.stroke();
+        }
+    }
+
+    function startAnimation() {
+        if (!animation) {
+            animation = setInterval(draw, 20);
+        }
+    }
+
+    function stopAnimation() {
+        clearInterval(animation);
+        animation = null;
+    }
+
+    function resetAnimation() {
+        t = 0;
+        trail = [];
+        startAnimation();
+    }
+
+    function changeTrajectory(newTrajectory) {
+        trajectory = newTrajectory;
+        resetAnimation();
+    }
+
+    startAnimation();
+</script>
+</body>
+</html>

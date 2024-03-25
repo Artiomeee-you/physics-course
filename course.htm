@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивная система обучения по физике</title>
+    <style>
+        iframe {
+            position: fixed; /* фиксированное позиционирование */
+            top: 50%; /* расстояние от верхнего края страницы */
+            left: 50%; /* расстояние от левого края страницы */
+            transform: translate(-50%, -50%); /* центрирование по центру */
+            width: -webkit-fill-available; /* ширина iframe */
+            height: 80%; /* высота iframe */
+            border: none; /* убираем границу */
+            z-index: -1; /* устанавливаем на задний план */
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex; /* Добавлено свойство flex для body */
+            justify-content: left; /* Распределение элементов по горизонтали */
+        }
+        
+        .lesson-content {
+            max-width: 250px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        
+        h2 {
+            color: #333;
+            margin-top: 0;
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            border-radius: 50px;
+            margin-bottom: 5px;
+            transition: background-color 0.3s;
+            max-Width: 335px;
+
+            
+        }
+
+        h2:hover {
+            background-color: #e0e0e0;
+            ;
+
+        }
+
+        .lesson-topics ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+            max-height: 0;
+            padding-left: 20px; /* Отступ для подразделов */
+        }
+        
+        .lesson-topics li {
+            padding: 5px 0;
+            transition: background-color 0.3s;
+            border-radius: 25px;
+
+        }
+
+        .lesson-topics li:hover {
+            background-color: #999999;
+            padding: 10px 10px ;
+        }
+
+        .arrow {
+            display: inline-block;
+            border-top: 7px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 7px solid #333;
+            margin-left: 10px;
+            transition: transform 0.3s;
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+
+        .arrow.opened {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="lesson-topics">
+        <h2 onclick="toggleTopics('kinematics')" >Кинематика </h2>
+        <ul id="kinematics" >
+            <h2 onclick="toggleTopics('basic-concepts')">Основные понятия 
+                <ul id="basic-concepts" style="max-height: 0; overflow: hidden;">
+                    <li onclick="toggleTopics('kinematics'),loadTraekt('1_1_1')"  >Физические величины</li>
+                    <li onclick="toggleTopics('kinematics'),loadTraekt('1_1_2')"  >Механическое движение</li>
+                    <li onclick="toggleTopics('kinematics'),loadTraekt('1_1_3')"  >Материальная точка.Система отсчета</li>
+                    <li onclick="toggleTopics('kinematics'),loadTraekt('1_1_4')"  >Относительность движения</li>
+                    <li onclick="toggleTopics('kinematics'),loadTraekt('1_1_5')"  >Перемещение.Координаты тела</li>
+                    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScdaKuBuVYeGNiqNhywny4V2jV9Z8u2ABRxWtTBtRl0P-_1lQ/viewform" target="_blank">Самоконтроль 1</a></li>
+                    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfotEhHLAhixuvprNFofsmo3DqQq7fSYC20jEuP-tkm91iLXQ/viewform" target="_blank">Самоконтроль 2</a></li>
+                    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeiaRNr2Mj--wr1AN-RblZiQM-sXd2uflRfULA17jG37q0Hpg/viewform" target="_blank">Самоконтроль 3</a></li>
+                    
+
+
+                </ul>
+            </h2>
+            <h2 onclick="toggleTopics('uniform-motion')">Равномерное движение 
+                <ul id="uniform-motion" style="max-height: 0; overflow: hidden;">
+                    <li onclick="toggleTopics('kinematics'),loadTraekt('1_2_1')"  >Определение</li>
+                    <li onclick="toggleTopics('kinematics'),loadTraekt('1_2_2')"  >Скорость равномерного движения</li>
+                    <li onclick="toggleTopics('kinematics'),onsite('http://files.school-collection.edu.ru/dlrstore/669ba087-e921-11dc-95ff-0800200c9a66/index_listing.html')"  >Задачи на равномерное движение (1)</li>
+                    <li onclick="toggleTopics('kinematics'),loadTraekt('1_2_3(2)')"  >Задачи на равномерное движение (2)</li>
+                </ul>
+            </h2>
+            <h2 onclick="toggleTopics('uniform-acceleration')">Равноускоренное движение 
+                <ul id="uniform-acceleration" style="max-height: 0; overflow: hidden;">
+                    <li onclick="toggleTopics('kinematics'),loadTraekt('1_3_1')"  >Определение</li>
+                    <li onclick="toggleTopics('kinematics'),loadTraekt('1_3_2')"  >Ускорение</li>
+                    <li onclick="toggleTopics('kinematics'),loadTraekt('1_3_3')"  >Графики равноускоренного движения</li>
+                    <li onclick="toggleTopics('kinematics'),loadTraekt('1_3_4')"  >Средняя скорость</li>
+                    
+                    <li>Задачи на равноускоренное движение</li>
+                </ul>
+            </h2>
+            <h2 onclick="toggleTopics('curvilinear-motion')">Движение по кривой
+                <ul id="curvilinear-motion" style="max-height: 0; overflow: hidden;">
+                    <li>Определение</li>
+                    <li>Центростремительное ускорение</li>
+                    <li>Примеры задач на движение по кривой</li>
+                </ul>
+            </h2>
+        </ul>
+    </div>
+
+    <div class="lesson-topics">
+        <h2 onclick="toggleTopics('dynamics')">Динамика </h2>
+        <ul id="dynamics">
+            <h2 onclick="toggleTopics('force')">Сила 
+                <ul id="force" style="max-height: 0; overflow: hidden;">
+                    <li>Виды сил</li>
+                    <li>Принципы действия сил</li>
+                    <li>Сила тяжести</li>
+                </ul>
+            </h2>
+            <h2 onclick="toggleTopics('newton-laws')">Законы Ньютона 
+                <ul id="newton-laws" style="max-height: 0; overflow: hidden;">
+                    <li>Первый закон Ньютона</li>
+                    <li>Второй закон Ньютона</li>
+                    <li>Третий закон Ньютона</li>
+                </ul>
+            </h2>
+        </ul>
+    </div>
+
+    <div class="lesson-topics">
+        <h2 onclick="toggleTopics('statics')">Статика </h2>
+        <ul id="statics">
+            <h2 onclick="toggleTopics('forces')">Силы в статике
+                <ul id="forces" style="max-height: 0; overflow: hidden;">
+                    <li>Равновесие тела</li>
+                    <li>Условия равновесия</li>
+                    <li>Принципы равновесия</li>
+                </ul>
+            </h2>
+            <h2 onclick="toggleTopics('torque')">Момент силы 
+                <ul id="torque" style="max-height: 0; overflow: hidden;">
+                    <li>Определение</li>
+                    <li>Момент силы относительно точки</li>
+                    <li>Условия равновесия тела под действием момента силы</li>
+                </ul>
+            </h2>
+        </ul>
+        
+    </div>
+ <form id="teacherRegistrationForm">
+    <input type="text" name="username" placeholder="Имя пользователя">
+    <input type="password" name="password" placeholder="Пароль">
+    <input type="email" name="email" placeholder="Email">
+    <!-- Другие поля для регистрации учителя -->
+    <button type="button" onclick="teacherRegister()">Зарегистрироваться как учитель</button>
+</form>
+
+    <!-- Форма для регистрации ученика -->
+<form id="studentRegistrationForm">
+    <input type="text" name="username" placeholder="Имя пользователя">
+    <input type="password" name="password" placeholder="Пароль">
+    <input type="email" name="email" placeholder="Email">
+    <!-- Другие поля для регистрации ученика -->
+    <button type="button" onclick="studentRegister()">Зарегистрироваться как ученик</button>
+</form>
+
+    <!-- Информация о курсах -->
+    <div id="courseInfo"></div>
+    <script>
+        function toggleTopics(topicId) {
+            var topic = document.getElementById(topicId);
+            var arrow = document.getElementById(topicId + '-arrow');
+            if (topic.style.maxHeight) {
+                topic.style.maxHeight = null;
+            } else {
+                topic.style.maxHeight = 1500 + "px";
+            }
+        }
+
+        function loadTraekt(file) {
+            var iframe = document.querySelector('iframe');
+            iframe.src = file + '.html';
+        }
+        function onsite(http) {
+            var iframe = document.querySelector('iframe');
+            iframe.src = http ;
+        }
+
+        
+        function teacherLogin() {
+            const form = document.getElementById('teacherLoginForm');
+            const formData = new FormData(form);
+            
+            fetch('/teacher/login', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Если аутентификация успешна, получаем информацию о курсах
+                    fetch('/teacher/courses')
+                    .then(response => response.json())
+                    .then(data => {
+                        // Отображаем информацию о курсах
+                        document.getElementById('courseInfo').innerText = JSON.stringify(data);
+                    });
+                } else {
+                    console.error('Ошибка аутентификации учителя');
+                }
+            })
+            .catch(error => console.error('Ошибка:', error));
+        }
+
+        // Функция для отправки запроса на аутентификацию ученика
+        function studentLogin() {
+            const form = document.getElementById('studentLoginForm');
+            const formData = new FormData(form);
+            
+            fetch('/student/login', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Если аутентификация успешна, получаем информацию о курсах
+                    fetch('/student/courses')
+                    .then(response => response.json())
+                    .then(data => {
+                        // Отображаем информацию о курсах
+                        document.getElementById('courseInfo').innerText = JSON.stringify(data);
+                    });
+                } else {
+                    console.error('Ошибка аутентификации ученика');
+                }
+            })
+            .catch(error => console.error('Ошибка:', error));
+        }
+
+        // Маршрут для регистрации учителя
+app.post('/teacher/register', (req, res) => {
+    const { username, password, email } = req.body;
+    // Реализуйте логику сохранения информации о зарегистрированном учителе в базе данных
+});
+
+// Маршрут для регистрации ученика
+app.post('/student/register', (req, res) => {
+    const { username, password, email } = req.body;
+    // Реализуйте логику сохранения информации о зарегистрированном ученике в базе данных
+});// Функция для регистрации учителя
+function teacherRegister() {
+    const form = document.getElementById('teacherRegistrationForm');
+    const formData = new FormData(form);
+    
+    fetch('/teacher/register', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Учитель успешно зарегистрирован');
+            // Можно добавить дополнительную логику, например, перенаправление на страницу входа
+        } else {
+            console.error('Ошибка регистрации учителя');
+        }
+    })
+    .catch(error => console.error('Ошибка:', error));
+}
+
+// Функция для регистрации ученика
+function studentRegister() {
+    const form = document.getElementById('studentRegistrationForm');
+    const formData = new FormData(form);
+    
+    fetch('/student/register', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Ученик успешно зарегистрирован');
+            // Можно добавить дополнительную логику, например, перенаправление на страницу входа
+        } else {
+            console.error('Ошибка регистрации ученика');
+        }
+    })
+    .catch(error => console.error('Ошибка:', error));
+}
+
+
+
+    </script>
+    <iframe src="Telo.html" width="800" height="600" frameborder="0"></iframe>
+</body>
+</html>

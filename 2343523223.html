@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Измерение длины прямоугольника</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .animation {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .ruler {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 500px;
+            height: 50px;
+            cursor: move;
+            display: flex;
+            align-items: center;
+        }
+        .ruler-line {
+            height: 4px;
+            width: 100%;
+            background-color: #000;
+            position: relative;
+        }
+        .ruler-marks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .ruler-mark {
+            position: absolute;
+            top: 0;
+            height: 10px;
+            width: 1px;
+            background-color: #000;
+        }
+        .ruler-mark.major {
+            height: 15px;
+            width: 2px;
+        }
+        .ruler-mark.major::after {
+            content: attr(data-value);
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+        }
+        .rectangle {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            background-color: #ccc;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Измерение длины прямоугольника</h1>
+
+        <div class="animation">
+            <div class="ruler">
+                <div class="ruler-line"></div>
+                <div class="ruler-marks"></div>
+            </div>
+            <div class="rectangle"></div>
+        </div>
+
+        <p>Переместите линейку, чтобы измерить длину прямоугольника, и введите ее в поле ниже (в сантиметрах):</p>
+        <input type="number" id="lengthInput" class="form-control mb-3">
+        <button class="btn btn-primary" onclick="checkAnswer()">Проверить ответ</button>
+        <div id="result" class="mt-3"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const ruler = document.querySelector('.ruler');
+        const rulerMarks = document.querySelector('.ruler-marks');
+        const rectangle = document.querySelector('.rectangle');
+        const lengthInput = document.getElementById('lengthInput');
+        const resultDiv = document.getElementById('result');
+
+        let isDraggingRuler = false;
+        let prevPageX, prevPageY;
+        let rectangleWidth, rectangleHeight;
+
+        generateRandomRectangle();
+        createRulerMarks();
+
+        ruler.addEventListener('mousedown', dragStartRuler);
+        document.addEventListener('mousemove', dragRuler);
+        document.addEventListener('mouseup', dragEndRuler);
+
+        function dragStartRuler(e) {
+            isDraggingRuler = true;
+            prevPageX = e.pageX;
+            prevPageY = e.pageY;
+        }
+
+        function dragRuler(e) {
+            if (!isDraggingRuler) return;
+            const dx = e.pageX - prevPageX;
+            const dy = e.pageY - prevPageY;
+            const newLeft = Math.max(0, Math.min(window.innerWidth - ruler.offsetWidth, ruler.offsetLeft + dx));
+            const newTop = Math.max(0, Math.min(window.innerHeight - ruler.offsetHeight, ruler.offsetTop + dy));
+            ruler.style.left = `${newLeft}px`;
+            ruler.style.top = `${newTop}px`;
+            prevPageX = e.pageX;
+            prevPageY = e.pageY;
+        }
+
+        function dragEndRuler() {
+            isDraggingRuler = false;
+        }
+
+        function checkAnswer() {
+            const userLength = parseFloat(lengthInput.value);
+            if (isNaN(userLength)) {
+                resultDiv.textContent = 'Пожалуйста, введите число.';
+                resultDiv.classList.remove('text-success', 'text-danger');
+            } else if (userLength === rectangleWidth / 10) {
+                resultDiv.textContent = 'Правильно!';
+                resultDiv.classList.remove('text-danger');
+                resultDiv.classList.add('text-success');
+                generateRandomRectangle();
+            } else {
+                resultDiv.textContent = `Неправильно. Правильная длина: ${rectangleWidth / 10} см.`;
+                resultDiv.classList.remove('text-success');
+                resultDiv.classList.add('text-danger');
+            }
+        }
+
+        function generateRandomRectangle() {
+    const minWidth = 5;  // Уменьшил в 10 раз для получения кратных 10
+    const maxWidth = 40; // Уменьшил в 10 раз для получения кратных 10
+    const minHeight = 50;
+    const maxHeight = 200;
+    rectangleWidth = (Math.floor(Math.random() * (maxWidth - minWidth + 1)) + minWidth) * 10;
+    rectangleHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
+    rectangle.style.width = `${rectangleWidth}px`;
+    rectangle.style.height = `${rectangleHeight}px`;
+}
+
+        function createRulerMarks() {
+            for (let i = 0; i < 51; i++) {
+                const mark = document.createElement('div');
+                mark.className = 'ruler-mark';
+                if (i % 10 === 0) {
+                    mark.classList.add('major');
+                    mark.dataset.value = i;
+                }
+                mark.style.left = `${i * 10}px`;
+                rulerMarks.appendChild(mark);
+            }
+        }
+    </script>
+</body>
+</html>

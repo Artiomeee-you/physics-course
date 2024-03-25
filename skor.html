@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Скорость в физике</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .animation {
+            width: 600px;
+            height: 300px;
+            border: 1px solid #ccc;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .car {
+            width: 50px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <main>
+    <h1>Скорость в физике</h1>
+
+    <p>Скорость - это физическая величина, характеризующая изменение положения тела в пространстве за единицу времени. Другими словами, скорость показывает, насколько быстро тело перемещается.</p>
+
+    <p>Математически скорость определяется как отношение пройденного пути к затраченному времени:</p>
+
+    <p style="text-align: center;">v = s / t</p>
+
+    <p>Где:</p>
+    <ul>
+        <li>v (velocity) - скорость</li>
+        <li>s (distance) - пройденный путь</li>
+        <li>t (time) - затраченное время</li>
+    </ul>
+
+    <p>Единицами измерения скорости являются метры в секунду (м/с), километры в час (км/ч) и другие.</p>
+
+    <h2>Интерактивная анимация</h2>
+    <p>Ниже представлена интерактивная анимация, демонстрирующая движение автомобиля с различными скоростями. Вы можете изменять скорость с помощью ползунка.</p>
+
+    <div class="animation">
+        <div class="car"></div>
+    </div>
+
+    <input type="range" id="speedRange" min="1" max="10" value="5">
+    <span id="speedValue">5</span> м/с
+</main>
+    <script>
+        const car = document.querySelector('.car');
+        const speedRange = document.getElementById('speedRange');
+        const speedValue = document.getElementById('speedValue');
+
+        let animationId;
+
+        function animate() {
+            const speed = parseInt(speedValue.textContent);
+            const carSpeed = speed * 60; // Преобразование скорости в пикселы/сек
+            const carPosition = parseInt(car.style.left) || 0;
+
+            car.style.left = `${carPosition + carSpeed / 60}px`;
+
+            if (carPosition + carSpeed / 60 > 550) {
+                car.style.left = '0px';
+            }
+
+            animationId = requestAnimationFrame(animate);
+        }
+
+        speedRange.addEventListener('input', () => {
+            speedValue.textContent = speedRange.value;
+            cancelAnimationFrame(animationId);
+            animate();
+        });
+
+        animate();
+    </script>
+</body>
+</html>

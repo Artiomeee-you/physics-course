@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивная система обучения по физике</title>
+    <style>
+        /* Ваш стиль */
+    </style>
+</head>
+<body>
+    <div class="lesson-topics">
+        <!-- Ваш HTML код -->
+    </div>
+
+    <script>
+        // Функция для сохранения данных учителя
+        function saveTeacher(username, password) {
+            // Создаем объект для хранения данных
+            var teacherData = {
+                username: username,
+                password: password
+            };
+            // Преобразуем объект в строку и сохраняем в localStorage
+            localStorage.setItem('teacher', JSON.stringify(teacherData));
+        }
+
+        // Функция для сохранения данных ученика
+        function saveStudent(username, password, teacherUsername) {
+            // Создаем объект для хранения данных
+            var studentData = {
+                username: username,
+                password: password,
+                teacherUsername: teacherUsername
+            };
+            // Преобразуем объект в строку и сохраняем в localStorage
+            localStorage.setItem('student', JSON.stringify(studentData));
+        }
+
+        // Функция для загрузки данных учителя
+        function loadTeacher() {
+            // Получаем данные из localStorage и преобразуем обратно в объект
+            var teacherData = JSON.parse(localStorage.getItem('teacher'));
+            return teacherData;
+        }
+
+        // Функция для загрузки данных ученика
+        function loadStudent() {
+            // Получаем данные из localStorage и преобразуем обратно в объект
+            var studentData = JSON.parse(localStorage.getItem('student'));
+            return studentData;
+        }
+    </script>
+</body>
+</html>
