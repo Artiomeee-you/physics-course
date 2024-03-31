@@ -9,6 +9,13 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
         }
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
         .container {
             max-width: none;
             margin: 0 auto;
@@ -16,34 +23,47 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .flex-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Высота вьюпорта */
-}
         .illustration {
             text-align: center;
             margin-bottom: 20px;
+            max-width: 30%;
+            margin: auto;;
         }
-    </style>
+        main {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .flex-container object {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .flex-container .rectangle {
+            width: 100%;
+            height: 140px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+   </style>
 </head>
+<script src="ruffle.js"></script>
 <body>
     <div class="container">
         <h1 class="text-center mb-4">Ускорение</h1>
 
         <p>Ускорение - это векторная величина, характеризующая изменение скорости тела с течением времени. Ускорение показывает, как быстро меняется скорость тела и в каком направлении происходит это изменение.</p>
 </div>
-<div class="flex-container">
-    <video width="800" height="600" controls>
-  <source src="1_3_2.mp4" type="video/mp4">
-  Ваш браузер не поддерживает тег video.
-</video>
-</div>
-        <div class="illustration">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Gleichmaessig_beschleunigte_Bewegung_Graph.svg/400px-Gleichmaessig_beschleunigte_Bewegung_Graph.svg.png" alt="Ускорение" class="img-fluid">
-            <p class="mt-2">Графическое представление ускорения</p>
-        </div>
+
+        
 
         <h2>Определение ускорения</h2>
 
@@ -64,13 +84,11 @@
             <li><strong>Отрицательное ускорение</strong> - скорость тела уменьшается (торможение).</li>
         </ul>
 
-        <div class="illustration">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Velocity-acceleration.svg/400px-Velocity-acceleration.svg.png" alt="Виды ускорения" class="img-fluid">
-            <p class="mt-2">Положительное и отрицательное ускорение</p>
-        </div>
+       
 
         <p>Ускорение играет важную роль в описании движения тел в физике, а также в различных инженерных и технических областях, связанных с проектированием транспортных средств, механизмов и других движущихся объектов.</p>
         <div class="flex-container">
+             <div class="rectangle"></div>
     <object type="application/x-shockwave-flash" data="1_3_2.swf" width="1000" height="750">
         <param name="movie" value="example.swf">
         <param name="quality" value="high">

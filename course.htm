@@ -144,17 +144,27 @@
     <div class="lesson-topics">
         <h2 onclick="toggleTopics('dynamics')">Динамика </h2>
         <ul id="dynamics">
-            <h2 onclick="toggleTopics('force')">Сила 
-                <ul id="force" style="max-height: 0; overflow: hidden;">
-                    <li>Виды сил</li>
-                    <li>Принципы действия сил</li>
+            <h2 onclick="toggleTopics('force')">Основные понятия 
+                <ul id="force" style="max-height: 0; overflow: hidden;"><li onclick="toggleTopics('dynamics'),loadTraekt('2_1_1')"  >Масса</li>
+                    <li onclick="toggleTopics('dynamics'),loadTraekt('2_1_2')"  >Сила</li>
+                    <li onclick="toggleTopics('dynamics'),loadTraekt('2_1_3')"  >Явление инерции</li>
                     <li>Сила тяжести</li>
+                    <li onclick="toggleTopics('dynamics'),loadTraekt('2_1_4')"  >Явление инерции</li>
+                </ul>
+            </h2>
+            <h2 onclick="toggleTopics('POW')">Силы 
+                <ul id="POW" style="max-height: 0; overflow: hidden;">
+                    <li onclick="toggleTopics('POW'),loadTraekt('2_2_1')"  >Сложение сил и равнодействующая</li>
+                    <li onclick="toggleTopics('POW'),loadTraekt('2_2_2')"  >Сила упругости</li>
+                    <li onclick="toggleTopics('POW'),loadTraekt('2_2_3')"  >Сила упругости</li>
+                    
                 </ul>
             </h2>
             <h2 onclick="toggleTopics('newton-laws')">Законы Ньютона 
                 <ul id="newton-laws" style="max-height: 0; overflow: hidden;">
-                    <li>Первый закон Ньютона</li>
-                    <li>Второй закон Ньютона</li>
+                    <li onclick="toggleTopics('newton-laws'),loadTraekt('2_3_1')"  >Первый закон Ньютона</li>
+                    <li onclick="toggleTopics('newton-laws'),loadTraekt('2_3_2')"  >Второй закон Ньютона</li>
+                    <li onclick="toggleTopics('newton-laws'),loadTraekt('2_3_3')"  >Третий закон Ньютона</li>
                     <li>Третий закон Ньютона</li>
                 </ul>
             </h2>
@@ -164,20 +174,15 @@
     <div class="lesson-topics">
         <h2 onclick="toggleTopics('statics')">Статика </h2>
         <ul id="statics">
-            <h2 onclick="toggleTopics('forces')">Силы в статике
-                <ul id="forces" style="max-height: 0; overflow: hidden;">
-                    <li>Равновесие тела</li>
-                    <li>Условия равновесия</li>
-                    <li>Принципы равновесия</li>
-                </ul>
+            <h2 onclick="toggleTopics('statics'),loadTraekt('3_1_1')"  >Простые механизмы</li>
+            <h2 onclick="toggleTopics('statics'),loadTraekt('3_1_2')"  >Рычаг. Момент силы</li>
+            <h2 onclick="toggleTopics('statics'),loadTraekt('3_1_3')"  >Блок. Система блоков</li>
+            <h2 onclick="toggleTopics('statics'),loadTraekt('3_1_4')"  >Наклонная плоскость</li>
+            <h2 onclick="toggleTopics('statics'),loadTraekt('3_1_5')"  >Золотое правило</li>
+            <h2 onclick="toggleTopics('statics'),loadTraekt('3_1_6')"  >КПД</li>
+
             </h2>
-            <h2 onclick="toggleTopics('torque')">Момент силы 
-                <ul id="torque" style="max-height: 0; overflow: hidden;">
-                    <li>Определение</li>
-                    <li>Момент силы относительно точки</li>
-                    <li>Условия равновесия тела под действием момента силы</li>
-                </ul>
-            </h2>
+            
         </ul>
         
     </div>

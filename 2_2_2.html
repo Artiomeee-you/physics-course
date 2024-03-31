@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Сила упругости</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+        .container {
+            max-width: none;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .illustration {
+            text-align: center;
+            margin-bottom: 20px;
+            max-width: 30%;
+            margin: auto;;
+        }
+        main {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .flex-container object {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .flex-container .rectangle {
+            width: 100%;
+            height: 140px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+   </style>
+</head>
+<script src="ruffle.js"></script>
+<body>
+<main>
+    <div class="container">
+        <h1 class="text-center mb-4">Сила упругости</h1>
+
+        <p>Сила упругости - это сила, возникающая при деформации упругого тела и направленная противоположно этой деформации.</p>
+
+        <div class="illustration">
+            <img src="elastic_force.png" alt="Сила упругости" class="img-fluid">
+        </div>
+
+        <h2>Характеристики силы упругости</h2>
+
+        <p>Силы упругости обладают следующими характеристиками:</p>
+
+        <ul>
+            <li><strong>Пропорциональность:</strong> сила упругости пропорциональна величине деформации тела.</li>
+            <li><strong>Обратимость:</strong> если сила упругости перестает действовать, то тело возвращается к своей исходной форме.</li>
+            <li><strong>Направленность:</strong> сила упругости всегда направлена противоположно направлению деформации.</li>
+        </ul>
+
+        <p>Силы упругости широко применяются в различных областях, включая механику, инженерные расчеты и строительство.</p>
+
+    </div>
+    <div class="flex-container">
+            <object type="application/x-shockwave-flash" data="2_2_2.swf" width="1000" height="750">
+                <param name="movie" value="2_2_2.swf">
+                <param name="quality" value="high">
+                <param name="wmode" value="opaque">
+                <param name="allowScriptAccess" value="always">
+            </object>
+        </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

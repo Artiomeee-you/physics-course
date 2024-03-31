@@ -9,6 +9,13 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
         }
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
         .container {
             max-width: none;
             margin: 0 auto;
@@ -16,40 +23,58 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        
-        .flex-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Высота вьюпорта */
-}
         .illustration {
             text-align: center;
             margin-bottom: 20px;
+            max-width: 30%;
+            margin: auto;;
         }
-    </style>
+        main {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .flex-container object {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .flex-container .rectangle {
+            width: 100%;
+            height: 140px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+   </style>
 </head>
+<script src="ruffle.js"></script>
 <body>
     <div class="container">
         <h1 class="text-center mb-4">Графики равноускоренного движения</h1>
-
+        
         <p>Графики являются наглядным способом представления зависимостей между различными величинами, описывающими движение тела. Для равноускоренного движения, при котором ускорение остается постоянным, используются следующие графики:</p>
 
-        <h2>График зависимости скорости от времени (v(t))</h2>
-
-        <div class="illustration">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Gleichmaessig_beschleunigte_Bewegung_Graph.svg/400px-Gleichmaessig_beschleunigte_Bewegung_Graph.svg.png" alt="График скорости от времени" class="img-fluid">
-            <p class="mt-2">График зависимости скорости от времени для равноускоренного движения</p>
+        <h2>График зависимости ускорения от времени (a(t))</h2>
+        <div class="flex-container">
+            <video width="800" height="600" controls>
+            <source src="1_3_3.mp4" type="video/mp4">
+            Ваш браузер не поддерживает тег video.
+            </video>
         </div>
 
         <p>На графике зависимости скорости от времени (v(t)) для равноускоренного движения наблюдается прямая линия с наклоном, определяемым ускорением.</p>
 
         <h2>График зависимости пути от времени (s(t))</h2>
 
-        <div class="illustration">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Gleichmaessig_beschleunigte_Bewegung.svg/400px-Gleichmaessig_beschleunigte_Bewegung.svg.png" alt="График пути от времени" class="img-fluid">
-            <p class="mt-2">График зависимости пути от времени для равноускоренного движения</p>
-        </div>
+       
 
         <p>На графике зависимости пути от времени (s(t)) для равноускоренного движения наблюдается парабола, форма которой определяется ускорением.</p>
 
@@ -67,6 +92,7 @@
 
         <p>Понимание графиков равноускоренного движения имеет важное значение в физике, а также в различных инженерных и технических областях, где необходимо анализировать и описывать движение объектов с постоянным ускорением.</p>
         <div class="flex-container">
+            <div class="rectangle"></div>
     <object type="application/x-shockwave-flash" data="1_3_3.swf" width="1000" height="750">
         <param name="movie" value="example.swf">
         <param name="quality" value="high">

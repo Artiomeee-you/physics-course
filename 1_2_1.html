@@ -9,6 +9,13 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
         }
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
         .container {
             max-width: none;
             margin: 0 auto;
@@ -16,28 +23,45 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .flex-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Высота вьюпорта */
-}
         .illustration {
             text-align: center;
             margin-bottom: 20px;
+            max-width: 30%;
+            margin: auto;;
         }
-    </style>
+        main {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .flex-container object {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .flex-container .rectangle {
+            width: 100%;
+            height: 140px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+   </style>
 </head>
+<script src="ruffle.js"></script>
 <body>
     <div class="container">
         <h1 class="text-center mb-4">Прямолинейное равномерное движение</h1>
 
         <p>Прямолинейное равномерное движение - это движение тела по прямой линии с постоянной скоростью. Это один из наиболее простых видов механического движения.</p>
 
-        <div class="illustration">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Gleichfoermige_Bewegung.svg/400px-Gleichfoermige_Bewegung.svg.png" alt="Прямолинейное равномерное движение" class="img-fluid">
-            <p class="mt-2">Иллюстрация прямолинейного равномерного движения</p>
-        </div>
 
         <h2>Характеристики прямолинейного равномерного движения</h2>
 
@@ -55,10 +79,6 @@
         <p>v = s / t</p>
         <p>t = s / v</p>
 
-        <div class="illustration">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Distance_time_speed.svg/400px-Distance_time_speed.svg.png" alt="Соотношения между путем, временем и скоростью" class="img-fluid">
-            <p class="mt-2">Соотношения между путем, временем и скоростью</p>
-        </div>
 
         <h2>Примеры прямолинейного равномерного движения</h2>
 
@@ -71,16 +91,10 @@
         </ul>
 
         <p>Прямолинейное равномерное движение является идеализированной моделью, так как в реальных условиях на тело действуют различные силы, изменяющие его скорость. Однако данная модель имеет важное значение для понимания основ механики и служит отправной точкой для изучения более сложных видов движения.</p>
-        <div class="flex-container">
-    <object type="application/x-shockwave-flash" data="1_2_1.swf" width="1000" height="750">
-        <param name="movie" value="1_2_1.swf">
-        <param name="quality" value="high">
-        <param name="wmode" value="opaque">
-        <param name="allowScriptAccess" value="always">
-    </object>
-</div>
+
 
 <div class="flex-container">
+    
     <object type="application/x-shockwave-flash" data="A_1_2_1_1.swf" width="1000" height="750">
         <param name="movie" value="A_1_2_1_1.swf">
         <param name="quality" value="high">
@@ -88,7 +102,7 @@
         <param name="allowScriptAccess" value="always">
     </object>
 </div>
-
+<br>
 <div class="flex-container">
     <object type="application/x-shockwave-flash" data="A_1_2_1_2.swf" width="1000" height="750">
         <param name="movie" value="A_1_2_1_2.swf">
@@ -98,6 +112,16 @@
     </object>
 </div>
     </div>
+<br>
+    <div class="flex-container">
+            <div class="rectangle"></div>
+    <object type="application/x-shockwave-flash" data="1_2_1.swf" width="1000" height="750">
+        <param name="movie" value="1_2_1.swf">
+        <param name="quality" value="high">
+        <param name="wmode" value="opaque">
+        <param name="allowScriptAccess" value="always">
+    </object>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

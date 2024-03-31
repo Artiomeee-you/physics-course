@@ -9,6 +9,13 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
         }
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
         .container {
             max-width: none;
             margin: 0 auto;
@@ -16,28 +23,45 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .flex-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Высота вьюпорта */
-}
         .illustration {
             text-align: center;
             margin-bottom: 20px;
+            max-width: 30%;
+            margin: auto;;
         }
-    </style>
+        main {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .flex-container object {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .flex-container .rectangle {
+            width: 100%;
+            height: 140px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+   </style>
 </head>
+<script src="ruffle.js"></script>
 <body>
     <div class="container">
         <h1 class="text-center mb-4">Скорость равномерного движения</h1>
 
         <p>Скорость является одной из основных характеристик движения тела. В случае равномерного движения скорость остается постоянной.</p>
 
-        <div class="illustration">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Gleichfoermige_Bewegung.svg/400px-Gleichfoermige_Bewegung.svg.png" alt="Равномерное движение" class="img-fluid">
-            <p class="mt-2">Иллюстрация равномерного движения</p>
-        </div>
 
         <h2>Определение скорости</h2>
 
@@ -63,10 +87,6 @@
             <li><strong>Независимость от времени</strong> - значение скорости не зависит от выбранного промежутка времени.</li>
         </ul>
 
-        <div class="illustration">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Pren_graf2.gif/400px-Pren_graf2.gif" alt="График скорости от времени" class="img-fluid">
-            <p class="mt-2">График зависимости скорости от времени для равномерного движения</p>
-        </div>
 
         <h2>Примеры равномерного движения</h2>
 
@@ -79,8 +99,9 @@
         </ul>
 
         <p>Понимание скорости и ее свойств при равномерном движении имеет важное значение в физике, а также в различных инженерных и технических областях, связанных с анализом и проектированием движущихся объектов.</p>
-   
+   <br>
         <div class="flex-container">
+            <div class="rectangle"></div>
     <object type="application/x-shockwave-flash" data="1_2_2.swf" width="1000" height="750">
         <param name="movie" value="1_2_2.swf">
         <param name="quality" value="high">

@@ -9,9 +9,12 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
         }
-        .illustration {
-            text-align: center;
-            margin-bottom: 20px;
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
         }
         .container {
             max-width: none;
@@ -20,25 +23,45 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        
-        .flex-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Высота вьюпорта */
-}
-    </style>
+        .illustration {
+            text-align: center;
+            margin-bottom: 20px;
+            max-width: 30%;
+            margin: auto;;
+        }
+        main {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .flex-container object {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .flex-container .rectangle {
+            width: 100%;
+            height: 140px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+   </style>
 </head>
+<script src="ruffle.js"></script>
 <body>
     <div class="container">
         <h1 class="text-center mb-4">Перемещение. Координаты тела</h1>
 
         <p>В физике перемещение описывает изменение положения тела в пространстве относительно выбранной системы отсчета. Для определения перемещения тела необходимо знать его координаты в начальный и конечный моменты времени.</p>
 
-        <div class="illustration">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Vektor_Verschiebung.svg/400px-Vektor_Verschiebung.svg.png" alt="Перемещение тела" class="img-fluid">
-            <p class="mt-2">Перемещение тела из точки A в точку B</p>
-        </div>
 
         <h2>Координаты тела</h2>
 
@@ -50,10 +73,6 @@
             <li><strong>Цилиндрическая система координат</strong> - задается расстоянием от оси z (r), углом в плоскости xy (θ) и высотой над плоскостью xy (z). Положение тела определяется тремя координатами (r, θ, z).</li>
         </ul>
 
-        <div class="illustration">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Coord_system_ca_hires.svg/400px-Coord_system_ca_hires.svg.png" alt="Системы координат" class="img-fluid">
-            <p class="mt-2">Декартова, полярная и цилиндрическая системы координат</p>
-        </div>
 
         <h2>Вектор перемещения</h2>
 
@@ -63,10 +82,6 @@
 
         <p>Вектор перемещения имеет направление, модуль (длину) и указывает на изменение положения тела в пространстве.</p>
 
-        <div class="illustration">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Bewegung_Ortsvektor.svg/400px-Bewegung_Ortsvektor.svg.png" alt="Вектор перемещения" class="img-fluid">
-            <p class="mt-2">Вектор перемещения тела</p>
-        </div>
 <div class="flex-container">
     <video width="800" height="600" controls>
   <source src="1_1_5.mp4" type="video/mp4">
@@ -75,6 +90,7 @@
 </div>
         <p>Понимание перемещения и координат тела имеет важное значение в физике для описания движения тел, а также в астрономии, навигации и многих других областях науки и техники.</p>
         <div class="flex-container">
+            <div class="rectangle"></div>
     <object type="application/x-shockwave-flash" data="1_1_5.swf" width="1000" height="750">
         <param name="movie" value="example.swf">
         <param name="quality" value="high">

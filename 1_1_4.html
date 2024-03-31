@@ -9,6 +9,13 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
         }
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
         .container {
             max-width: none;
             margin: 0 auto;
@@ -19,24 +26,42 @@
         .illustration {
             text-align: center;
             margin-bottom: 20px;
+            max-width: 30%;
+            margin: auto;;
         }
-        .flex-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Высота вьюпорта */
-    </style>
+        main {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .flex-container object {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .flex-container .rectangle {
+            width: 100%;
+            height: 140px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+   </style>
 </head>
+<script src="ruffle.js"></script>
 <body>
     <div class="container">
         <h1 class="text-center mb-4">Относительность движения</h1>
 
         <p>В физике понятие движения является относительным. Это означает, что движение тела можно описать только по отношению к некоторой системе отсчета, которая считается неподвижной.</p>
 
-        <div class="illustration">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Bewegung_relativ.svg/400px-Bewegung_relativ.svg.png" alt="Относительность движения" class="img-fluid">
-            <p class="mt-2">Пример относительности движения</p>
-        </div>
 
         <h2>Примеры относительного движения</h2>
 
@@ -54,10 +79,6 @@
 
         <p>Это означает, что механические явления протекают одинаково в любых инерциальных системах отсчета, независимо от их движения относительно друг друга.</p>
 
-        <div class="illustration">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Galilean_ship.svg/400px-Galilean_ship.svg.png" alt="Принцип относительности Галилея" class="img-fluid">
-            <p class="mt-2">Иллюстрация принципа относительности Галилея</p>
-        </div>
 
         <h2>Относительность скорости</h2>
 
@@ -67,6 +88,7 @@
 
         <p>Понимание относительности движения и скорости имеет важное значение в физике, астрономии, навигации и многих других областях науки и техники.</p>
         <div class="flex-container">
+            <div class="rectangle"></div>
     <object type="application/x-shockwave-flash" data="1_1_4.swf" width="1000" height="750">
         <param name="movie" value="example.swf">
         <param name="quality" value="high">
