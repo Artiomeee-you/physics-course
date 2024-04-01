@@ -1,70 +1,33 @@
-
-
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Простые механизмы</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Встроенный сайт с Ruffle</title>
+    <script src="https://unpkg.com/@rufflejs/ruffle@latest/dist/ruffle.js"></script>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
+        .ruffle-embed {
+            width: 100%;
+            height: 100%;
         }
-        .container {
-            max-width: none;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .illustration {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        main {
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
     </style>
 </head>
-<script src="ruffle.js"></script>
 <body>
-<main>
-    <div class="container">
-        <h1 class="text-center mb-4">Простые механизмы</h1>
-
-        <p>Простые механизмы - это устройства, состоящие из основных элементов, которые выполняют определенные механические функции. Они используются для упрощения работы, передачи силы и изменения направления движения.</p>
-
-        <div class="illustration">
-            <img src="simple_mechanisms.png" alt="Простые механизмы" class="img-fluid">
-        </div>
-
-        <h2>Примеры простых механизмов</h2>
-
-        <ul>
-            <li><strong>Рычаг</strong>: используется для усиления силы или изменения направления силы.</li>
-            <li><strong>Ползунок</strong>: применяется для преобразования движения вращения в поступательное движение.</li>
-            <li><strong>Колесо и ось</strong>: обеспечивает передачу силы и уменьшение трения при движении.</li>
-            <li><strong>Шкив и ремень</strong>: используется для передачи силы с помощью гибкого элемента, такого как ремень.</li>
-        </ul>
-
-        <p>Простые механизмы играют важную роль в повседневной жизни и применяются в различных областях, включая машиностроение, строительство и производство.</p>
-
+    <h1>Сайт с Ruffle</h1>
+    <div id="ruffle-wrapper">
+        <script>
+            // Скрипт для автоматического замещения SWF файлов на элементы Ruffle
+            window.addEventListener("load", function() {
+                const ruffleElems = document.querySelectorAll("object, embed");
+                ruffleElems.forEach(function(elem) {
+                    RufflePlayer.replace(elem, {
+                        polyfills: false,
+                        cors: false
+                    });
+                });
+            });
+        </script>
+        <iframe src="http://files.school-collection.edu.ru/dlrstore/669ba08a-e921-11dc-95ff-0800200c9a66/index_listing.html" title="Пример сайта" width="800" height="600" frameborder="0"></iframe>
     </div>
-    <div class="flex-container">
-        <object type="application/x-shockwave-flash" data="http://files.school-collection.edu.ru/dlrstore/669ba08a-e921-11dc-95ff-0800200c9a66/index_listing.html" width="1000" height="750">
-            <param name="movie" value="http://files.school-collection.edu.ru/dlrstore/669ba08a-e921-11dc-95ff-0800200c9a66/index_listing.html">
-            <param name="quality" value="high">
-            <param name="wmode" value="opaque">
-            <param name="allowScriptAccess" value="always">
-        </object>
-    </div>
-</main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
